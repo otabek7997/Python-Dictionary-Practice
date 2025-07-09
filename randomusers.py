@@ -78,7 +78,17 @@ def get_emails_of_older_than(data: dict, age: int) -> list[str]:
     Returns:
         list[str]: List of email addresses.
     """
-    pass
+    
+    emails=list()
+
+    
+    for user in data['results']:
+        if user['dob']['age']> age:
+            email = user['email']
+            emails.append(email)
+
+    return emails         
+
 
 
 def sort_users_by_age(data: dict, descending: bool = False) -> list[dict]:
@@ -106,7 +116,13 @@ def get_usernames_starting_with(data: dict, letter: str) -> list[str]:
     Returns:
         list[str]: List of matching usernames.
     """
-    pass
+    usernames = []
+
+    for user in data['results']:
+        if user['login']['username'].startswith(letter):
+            usernames.append(user['login']['username'])
+
+    return usernames        
 
 
 def get_average_age(data: dict) -> float:
@@ -119,7 +135,16 @@ def get_average_age(data: dict) -> float:
     Returns:
         float: Average age.
     """
-    pass
+    total_age = 0
+    count = 0
+
+    for user in data['results']:
+        total_age += user['dob']['age']
+        count += 1
+
+    return total_age / count  
+        
+    
 
 
 def group_users_by_nationality(data: dict) -> dict:
