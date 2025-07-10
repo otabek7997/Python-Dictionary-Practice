@@ -5,7 +5,9 @@ from randomusers import(
      count_users_by_gender,
      get_emails_of_older_than,
      get_usernames_starting_with,
-     get_average_age
+     get_average_age,
+     get_all_coordinates,
+     get_oldest_user
 )
 
 
@@ -13,4 +15,6 @@ from randomusers import(
 #print(count_users_by_gender(randomuser_data))
 #print(get_emails_of_older_than(randomuser_data, 42))
 #print(get_usernames_starting_with(randomuser_data,'g'))
-print(get_average_age(randomuser_data))
+#print(get_average_age(randomuser_data))
+#print(get_all_coordinates(randomuser_data))
+#print(get_oldest_user(randomuser_data))

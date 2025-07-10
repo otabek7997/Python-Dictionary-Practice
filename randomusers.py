@@ -170,7 +170,14 @@ def get_all_coordinates(data: dict) -> list[tuple[str, str]]:
     Returns:
         list[tuple[str, str]]: List of coordinate tuples.
     """
-    pass
+    all_coordinates = []
+
+    for user in data['results']:
+        if user['location']['coordinates'] not in all_coordinates:
+            all_coordinates.append(user['location']['coordinates'])
+
+
+    return all_coordinates        
 
 
 def get_oldest_user(data: dict) -> dict:
@@ -183,8 +190,15 @@ def get_oldest_user(data: dict) -> dict:
     Returns:
         dict: Dictionary containing 'name', 'age', and 'email' of the oldest user.
     """
-    pass
+    oldest = 0
 
+    for user in data['results']:
+        if user['dob']['age'] > oldest:
+            oldest = user['dob']['age']
+            oldest_user = user  # eng keksa foydalanuvchini saqlaymiz
+
+    return f"{oldest_user['name']['first']} {oldest_user['name']['last']} – {oldest}"
+    
 
 def find_users_in_timezone(data: dict, offset: str) -> list[dict]:
     """
